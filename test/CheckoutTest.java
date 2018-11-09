@@ -1,7 +1,4 @@
-import core.Catalogue;
-import core.Checkout;
-import core.IPricingRule;
-import core.Item;
+import core.*;
 import org.junit.jupiter.api.Test;
 import rules.BuyMPayForN;
 
@@ -19,7 +16,7 @@ class CheckoutTest {
         Catalogue catalogue = new Catalogue();
         catalogue.addProduct(new Item("vga",new BigDecimal(30),"VGA Adapter"));
 
-        Checkout checkout = new Checkout(new ArrayList<>());
+        ICheckout checkout = new Checkout(new ArrayList<>());
         checkout.scan(catalogue.findProduct("vga"));
         checkout.scan(catalogue.findProduct("vga"));
         checkout.scan(catalogue.findProduct("vga"));

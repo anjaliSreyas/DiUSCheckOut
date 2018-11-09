@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Checkout {
+public class Checkout implements ICheckout {
     private List<IPricingRule> pricingRules;
     private Map<Item, Integer> cartContents = new HashMap<>();
 
@@ -13,6 +13,7 @@ public class Checkout {
         this.pricingRules = pricingRules;
     }
 
+    @Override
     public void scan(Item item){
         if (!cartContents.containsKey(item)){
             cartContents.put(item, 1);
@@ -22,6 +23,7 @@ public class Checkout {
         }
     }
 
+    @Override
     public BigDecimal total(){
         BigDecimal total = new BigDecimal(0);
         Map<Item, Integer> processedItems = new HashMap<>();
@@ -45,6 +47,7 @@ public class Checkout {
         return total;
     }
 
+    @Override
     public Map<Item, Integer> getCartContents() {
         return cartContents;
     }
