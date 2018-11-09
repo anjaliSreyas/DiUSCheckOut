@@ -1,6 +1,6 @@
-import com.sun.tools.javac.comp.Check;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import core.Catalogue;
+import core.Checkout;
+import core.Item;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

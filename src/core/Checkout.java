@@ -1,13 +1,15 @@
+package core;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Checkout {
-    private List<PricingRule> pricingRules;
+    private List<IPricingRule> pricingRules;
     private Map<Item, Integer> cartContents = new HashMap<>();
 
-    public Checkout(List<PricingRule> pricingRules){
+    public Checkout(List<IPricingRule> pricingRules){
         this.pricingRules = pricingRules;
     }
 
