@@ -31,7 +31,7 @@ class BuyMPayForNTest {
         PricingRuleResponse response = pricingRule.evaluate(items);
 
         assertTrue(response.getFreeItems().isEmpty());
-        assertTrue(response.getTotalPrice().compareTo(new BigDecimal(80.0)) == 0);
+        assertTrue(response.getSubTotal().compareTo(new BigDecimal(80.0)) == 0);
         assertEquals(1, response.getProcessedItems().size());
         assertEquals(new Integer(5), response.getProcessedItems().get(offerItem));
     }
@@ -45,7 +45,7 @@ class BuyMPayForNTest {
         PricingRuleResponse response = pricingRule.evaluate(items);
 
         assertTrue(response.getFreeItems().isEmpty());
-        assertTrue(response.getTotalPrice().compareTo(new BigDecimal(240.0)) == 0);
+        assertTrue(response.getSubTotal().compareTo(new BigDecimal(240.0)) == 0);
         assertEquals(1, response.getProcessedItems().size());
         assertEquals(new Integer(15), response.getProcessedItems().get(offerItem));
     }
@@ -59,7 +59,7 @@ class BuyMPayForNTest {
         PricingRuleResponse response = pricingRule.evaluate(items);
 
         assertTrue(response.getFreeItems().isEmpty());
-        assertTrue(response.getTotalPrice().compareTo(new BigDecimal(240.0)) == 0);
+        assertTrue(response.getSubTotal().compareTo(new BigDecimal(240.0)) == 0);
         assertEquals(1, response.getProcessedItems().size());
         assertEquals(new Integer(15), response.getProcessedItems().get(offerItem));
     }
@@ -72,7 +72,7 @@ class BuyMPayForNTest {
         PricingRuleResponse response = pricingRule.evaluate(items);
 
         assertTrue(response.getFreeItems().isEmpty());
-        assertTrue(response.getTotalPrice().compareTo(new BigDecimal(0.0)) == 0);
+        assertTrue(response.getSubTotal().compareTo(new BigDecimal(0.0)) == 0);
         assertTrue(response.getProcessedItems().isEmpty());
     }
 }

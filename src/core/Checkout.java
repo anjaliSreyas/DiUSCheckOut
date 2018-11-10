@@ -31,7 +31,7 @@ public class Checkout implements ICheckout {
 
         for (IPricingRule pricingRule : pricingRules) {
             PricingRuleResponse response = pricingRule.evaluate(cartContents);
-            total = total.add(response.getTotalPrice());
+            total = total.add(response.getSubTotal());
             mergeMap(response.getProcessedItems(), processedItems);
             mergeMap(response.getFreeItems(), freeItems);
         }
