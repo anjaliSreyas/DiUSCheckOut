@@ -63,4 +63,33 @@ class BundleFreeItemTest {
         assertEquals(new Integer(3), response.getProcessedItems().get(freeItem));
     }
 
+    @Test
+    void freeItemCountInCartMoreThanOfferItem(){
+        Map<Item, Integer> items = new HashMap<Item, Integer>();
+        items.put(nonOfferItem, 5);
+        items.put(offerItem, 3);
+        items.put(freeItem, 4);
+        PricingRuleResponse response = pricingRule.evaluate(items);
+
+        assertEquals(0, response.getFreeItems().size());
+        assertTrue(response.getSubTotal().compareTo(new BigDecimal(0)) == 0);
+        assertEquals(1, response.getProcessedItems().size());
+        assertEquals(new Integer(3), response.getProcessedItems().get(freeItem));
+    }
+
+    @Test
+    void freeItemCountInCartLessThanOfferItem(){
+        Map<Item, Integer> items = new HashMap<Item, Integer>();
+        items.put(nonOfferItem, 5);
+        items.put(offerItem, 3);
+        items.put(freeItem, 2);
+        PricingRuleResponse response = pricingRule.evaluate(items);
+
+        assertEquals(1, response.getFreeItems().size());
+        assertEquals(new Integer(1), response.getFreeItems().get(freeItem));
+        assertTrue(response.getSubTotal().compareTo(new BigDecimal(0)) == 0);
+        assertEquals(1, response.getProcessedItems().size());
+        assertEquals(new Integer(2), response.getProcessedItems().get(freeItem));
+    }
+
 }

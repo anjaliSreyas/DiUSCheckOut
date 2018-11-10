@@ -28,14 +28,13 @@ public class BulkDiscount implements IPricingRule {
 
         if (cartContents.containsKey(item))
         {
-            Integer offerItemCount=cartContents.get(item);
-            if(offerItemCount>=minQty){
-                totalPrice=discountPrice.multiply(new BigDecimal(offerItemCount));
-                processedItems.put(item,offerItemCount);
-
+            Integer offerItemCount = cartContents.get(item);
+            if(offerItemCount >= minQty){
+                totalPrice = discountPrice.multiply(new BigDecimal(offerItemCount));
+                processedItems.put(item, offerItemCount);
             }
         }
 
-        return new PricingRuleResponse(totalPrice, processedItems, new HashMap<Item,Integer>());
+        return new PricingRuleResponse(totalPrice, processedItems, new HashMap<>());
     }
 }

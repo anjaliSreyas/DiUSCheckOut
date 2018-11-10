@@ -28,16 +28,18 @@ public class BundleFreeItem implements IPricingRule {
         if (cartContents.containsKey(item))
         {
             if(cartContents.containsKey(freeItem)){
-                Integer feeeItemCount=cartContents.get(freeItem);
-                Integer offerItemCount=cartContents.get(item);
-                if(feeeItemCount >=offerItemCount){
-                    processedItems.put(freeItem,offerItemCount);
-                    }
-                    else{
+                Integer freeItemCount = cartContents.get(freeItem);
+                Integer offerItemCount = cartContents.get(item);
 
-                    processedItems.put(freeItem,feeeItemCount+(offerItemCount-offerItemCount));
+                if(freeItemCount >= offerItemCount){
+                    processedItems.put(freeItem, offerItemCount);
                 }
-            }else {
+                else{
+                    processedItems.put(freeItem, freeItemCount);
+                    freeItems.put(freeItem, offerItemCount - freeItemCount);
+                }
+            }
+            else{
                 freeItems.put(freeItem, cartContents.get(item));
             }
         }
